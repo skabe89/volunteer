@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  belongs_to :community
+  belongs_to :community, optional: true
   has_many :pledges
   has_many :projects, through: :pledges
 

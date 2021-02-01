@@ -6,5 +6,5 @@ Rails.application.routes.draw do
   get '/login' => 'sessions#login'
   post 'log' => 'sessions#log'
   post '/logout' => 'sessions#logout'
-  
+  match '/auth/:google_oauth2/callback' => 'sessions#google', via: [:get,:post]
 end
