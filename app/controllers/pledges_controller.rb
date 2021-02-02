@@ -4,8 +4,9 @@ class PledgesController < ApplicationController
     if params[:project_id]
       @project = Project.find_by(id: params[:project_id])
       @pledges = @project.pledges.reverse
+    else
+      redirect_to root_path
     end
-
   end
 
   def new

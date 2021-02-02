@@ -8,14 +8,16 @@
 <h3>Pledged hours left until we reach our goal! <%= pledge_time_remaining(@project)%></h3>
 <h3><%= @project.pledges.length %>/<%= @project.min_volunteers %> Volunteers Commited!</h3>
 <br>
-<% if current_user == @project.organizer %>
-  <%= button_to "Edit", edit_project_path(@project), method: :get %>
-  <br>
-  <%= button_to "Delete", project_path(@project), method: :delete%>
-<%elsif already_pledged?(@project, current_user)%>
-  <h3>You have Pledged your time for this Project!</h3>
-<% else %>
-  <%= link_to "Pledge Your Time!", new_project_pledge_path(@project) %>
+<% if is_logged_in? %>
+  <% if current_user == @project.organizer %>
+    <%= button_to "Edit", edit_project_path(@project), method: :get %>
+    <br>
+    <%= button_to "Delete", project_path(@project), method: :delete%>
+  <%elsif already_pledged?(@project, current_user) %>
+    <h3>You have Pledged your time for this Project!</h3>
+  <% else %>
+    <%= link_to "Pledge Your Time!", new_project_pledge_path(@project) %>
+  <%end%>
 <%end%>
 <ul>
   <%= render @pledges %>
