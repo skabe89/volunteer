@@ -1,7 +1,7 @@
 <h1><%= @project.title%></h1>
 <h3>Organized by: <%= @project.organizer.name %></h3>
 <h3><%= @project.community.location %></h3>
-<h3><%= @project.date %></h3>
+<h3><%= @project.date.strftime("%A, %B %d %Y")%></h3>
 <h3><%= @project.address %></h3>
 <h3><%= @project. description %></h3>
 <h3>Estimated Total Time Needed: <%= @project.estimated_hours %></h3>
@@ -12,6 +12,8 @@
   <%= button_to "Edit", edit_project_path(@project), method: :get %>
   <br>
   <%= button_to "Delete", project_path(@project), method: :delete%>
+<%elsif already_pledged?(@project, current_user)%>
+  <h3>You have Pledged your time for this Project!</h3>
 <% else %>
   <%= link_to "Pledge Your Time!", new_project_pledge_path(@project) %>
 <%end%>

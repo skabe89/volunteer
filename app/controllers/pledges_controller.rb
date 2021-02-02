@@ -14,13 +14,19 @@ class PledgesController < ApplicationController
   end
 
   def create
-    @pledge = helpers.current_user.pledges.build(project_id: params[:project_id], hours: params[:pledge_hours])
+    @pledge = helpers.current_user.pledges.build(pledge_params)
     if @pledge.save
       redirect_to project_path(Project.find_by(id: params[:project_id]))
     else
       flash[:error] = @pledge.errors.full_messages
       redirect_to new_project_pledge_path(Project.find_by(id: params[:project_id]))
     end
+  end
+
+  private
+
+  def pledge_params
+    params.require(:pledge).permit(:project_id, :hours, :comment)
   end
 
 end
