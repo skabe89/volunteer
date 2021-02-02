@@ -1,5 +1,7 @@
 class ProjectsController < ApplicationController
 
+  before_action :find_project, only: [:show, :edit, :update, :destroy]
+
   def new
     @project = Project.new
   end
@@ -16,13 +18,22 @@ class ProjectsController < ApplicationController
   end
 
   def show
-    @project = Project.find_by(id: params[:id])
+  end
+
+  def edit
+  end
+
+  def updated
   end
 
   private
 
   def project_params
     params.require(:project).permit(:community_id, :title, :date, :address, :description, :estimated_hours, :min_volunteers)
+  end
+
+  def find_project
+    @project = Project.find_by(id: params[:id])
   end
 
 end

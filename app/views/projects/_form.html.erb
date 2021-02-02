@@ -1,0 +1,31 @@
+<%= form_for project do |f| %>
+<h3>City</h3>
+  <%= f.collection_select :community_id, Community.all, :id, :location, include_blank: "Select City" %>
+  <br>
+  <br>
+  <%= f.label :title %> <br>
+  <%= f.text_field :title %>
+  <br>
+  <br>
+  <%= f.label :date %> <br>
+  <%= f.date_field :date %>
+  <br>
+  <br>
+  <%= f.label "Approximate Hours Needed" %> <br>
+  <%= f.text_field :estimated_hours %>
+  <br>
+  <br>
+  <%= f.label "Volunteers Needed" %> <br>
+  <%= f.text_field :min_volunteers %>
+  <br>
+  <br>
+  <%= f.label :address %> <br>
+  <%= f.text_field :address %>
+  <br>
+  <br>
+  <%= f.label :description %> <br>
+  <%= f.text_area :description %>
+  <br>
+  <br>
+  <%= f.submit %>
+<% end %>

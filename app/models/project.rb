@@ -8,4 +8,9 @@ class Project < ApplicationRecord
   validates :description, presence: true
   validates :min_volunteers, presence: true
   validates :estimated_hours, presence: true
+
+  def organizer
+    User.find_by(id: self.organizer_id)
+  end
+
 end
