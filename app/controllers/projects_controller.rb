@@ -23,7 +23,14 @@ class ProjectsController < ApplicationController
   def edit
   end
 
-  def updated
+  def update
+    @project.update(project_params)
+    if @project.save
+      redirect_to project_path(@project)
+    else
+      flash.now[:error] = @project.errors.full_messages
+      render :edit
+    end
   end
 
   private
