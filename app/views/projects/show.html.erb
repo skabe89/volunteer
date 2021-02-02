@@ -5,12 +5,13 @@
 <h3><%= @project.address %></h3>
 <h3><%= @project. description %></h3>
 <h3>Estimated Time Needed: <%= @project.estimated_hours %></h3>
-<h3>#current pledges/<%= @project.min_volunteers %> Volunteers!</h3>
+<h3><%= @project.pledges.length %>/<%= @project.min_volunteers %> Volunteers Commited!</h3>
 <br>
 <% if current_user == @project.organizer %>
   <%= button_to "Edit", edit_project_path(@project), method: :get %>
+  <br>
   <%= button_to "Delete", project_path(@project), method: :delete%>
 <% else %>
- <%= button_to "Pledge your Time!"%>
+  <%= link_to "Pledge Your Time!", new_project_pledge_path(@project) %>
 <%end%>
 

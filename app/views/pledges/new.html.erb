@@ -1,0 +1,8 @@
+<h1>Pledge your time for "<%=@project.title%>"</h1>
+
+  <%= form_tag ({controller: 'pledges', action: 'create', method: 'post'}) do %>
+    <input type="hidden" name="project_id" value=<%=@project.id%>>
+    <label>Hours: </label>
+    <input type=text name=pledge_hours size="1">
+    <input type=submit value='Pledge Your Time!'>
+  <%end%>
