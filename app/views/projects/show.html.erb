@@ -4,7 +4,8 @@
 <h3><%= @project.date %></h3>
 <h3><%= @project.address %></h3>
 <h3><%= @project. description %></h3>
-<h3>Estimated Time Needed: <%= @project.estimated_hours %></h3>
+<h3>Estimated Total Time Needed: <%= @project.estimated_hours %></h3>
+<h3>Time Remaining: <%= pledge_time_remaining(@project)%></h3>
 <h3><%= @project.pledges.length %>/<%= @project.min_volunteers %> Volunteers Commited!</h3>
 <br>
 <% if current_user == @project.organizer %>

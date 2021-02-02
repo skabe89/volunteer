@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   end
   
 
-
+  root to: 'static#home'
   get '/login' => 'sessions#login'
   post 'log' => 'sessions#log'
   post '/logout' => 'sessions#logout'
