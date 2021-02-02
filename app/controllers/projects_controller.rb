@@ -18,7 +18,7 @@ class ProjectsController < ApplicationController
   end
 
   def show
-    @pledges = Pledge.where(project_id: params[:id])
+    @pledges = Pledge.where(project_id: params[:id]).reverse[0,3]
   end
 
   def edit

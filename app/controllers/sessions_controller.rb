@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
       @user = User.find_by(email: params[:email])
         if @user && @user.authenticate(params[:password])
           session[:user_id] = @user.id
-          redirect_to users_path
+          redirect_to root_path
         else
           flash.now[:error] = ["Something went wrong, please try again!"]
           render :login

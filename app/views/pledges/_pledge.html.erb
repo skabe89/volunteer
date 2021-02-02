@@ -1,1 +1,1 @@
-<li><%= pledge.user.name %> pledged <%= pledge.hours%> hours</li>
+<li><%= pledge.user.name %> pledged <%= pledge.hours%> hours <%= pledge.created_at.strftime("- %a %b %d") %></li>

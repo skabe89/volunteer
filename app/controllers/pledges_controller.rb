@@ -1,5 +1,13 @@
 class PledgesController < ApplicationController
 
+  def index
+    if params[:project_id]
+      @project = Project.find_by(id: params[:project_id])
+      @pledges = @project.pledges.reverse
+    end
+
+  end
+
   def new
     @project = Project.find_by(id: params[:project_id])
     @pledge = Pledge.new
