@@ -33,6 +33,11 @@ class ProjectsController < ApplicationController
     end
   end
 
+  def destroy
+    @project.destroy
+    redirect_to new_project_path
+  end
+
   private
 
   def project_params
