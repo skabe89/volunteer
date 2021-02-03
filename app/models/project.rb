@@ -14,4 +14,8 @@ class Project < ApplicationRecord
     User.find_by(id: self.organizer_id)
   end
 
+  def readable_date
+    self.date.strftime("%A, %B %d %Y")
+  end
+
 end

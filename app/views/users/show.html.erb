@@ -1,1 +1,16 @@
 <h1>User Show Page</h1>
+<h1><%= @user.name %></h1>
+<h3><%= @user.community.location_name %>, <%= @user.state.name %></h3>
+<h3>Upcoming Projects</h3>
+<br>
+<ul>
+<% if @user.pledges %>
+  <% @user.pledges.each do |p|  %>
+    <li>
+    <%= link_to p.project.title, project_path(p.project) %>
+    <%= p.project.readable_date %>
+    <%= p.hours%>
+    </li>
+  <% end %>
+<% end %>
+</ul>
