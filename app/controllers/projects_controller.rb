@@ -1,11 +1,10 @@
 class ProjectsController < ApplicationController
 
   before_action :find_project, only: [:show, :edit, :update, :destroy]
-  before_action :redirect_if_location_is_empty, only: [:new]
+  before_action :redirect_if_location_is_empty, only: [:new, :index]
 
-  def local
-    @projects = Project.where(community_id: helpers.current_user.id)
-    render :local
+  def index
+    @projects = Project.where(community_id: helpers.current_user.community.id)
   end
 
   def new
@@ -57,7 +56,7 @@ class ProjectsController < ApplicationController
 
   def redirect_if_location_is_empty
     if helpers.current_user.community.nil?
-      flash[:error] = ["Update your location to create a project!"]
+      flash[:error] = ["Update your location to proceed!"]
       redirect_to edit_user_path(helpers.current_user)
     end
   end

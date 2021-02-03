@@ -4,23 +4,18 @@
 <h3><%= @project.date.strftime("%A, %B %d %Y")%></h3>
 <h3><%= @project.address %></h3>
 <h3><%= @project. description %></h3>
-<h3>Estimated Total Time Needed: <%= @project.estimated_hours %></h3>
+<h3>Estimated Total Time Needed: <%= @project.estimated_hours %> hours</h3>
 <h3>Pledged hours left until we reach our goal! <%= pledge_time_remaining(@project)%></h3>
 <h3><%= @project.pledges.length %>/<%= @project.min_volunteers %> Volunteers Commited!</h3>
 <br>
-<% if is_logged_in? %>
-  <% if current_user == @project.organizer %>
-    <%= button_to "Edit", edit_project_path(@project), method: :get %>
-    <br>
-    <%= button_to "Delete", project_path(@project), method: :delete%>
-  <%elsif already_pledged?(@project, current_user) %>
-    <h3>Thank you for pledging your time to this Project!</h3>
-  <% else %>
-    <%= link_to "Pledge Your Time!", new_project_pledge_path(@project) %>
-  <%end%>
-<%end%>
+
+<%= render partial: 'options', locals: {project: @project} %>
+
 <ul>
   <%= render @pledges %>
 </ul>
-<%= link_to "View All Pledges", project_pledges_path(@project) %>
+
+<% if @project.pledges.length > 3 %>
+  <%= link_to "View All Pledges", project_pledges_path(@project) %>
+<% end %>
 

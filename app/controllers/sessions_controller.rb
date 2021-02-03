@@ -20,11 +20,10 @@ class SessionsController < ApplicationController
     @user = User.find_or_create_by(email: auth['email']) do |user|
       user.name = auth['name']
       user.password = SecureRandom.hex(10)
-      byebug
     end
     if @user && @user.id
       session[:user_id] = @user.id
-      redirect_to users_path
+      redirect_to edit_user_path(@user)
     else
       flash.now[:error] = @user.errors.full_messages
       redirect_to users_path

@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-  resources :users, only: [:index, :new, :create, :edit, :update]
+  resources :users, only: [:index, :new, :create, :edit, :update, :show]
   resources :projects do
     resources :pledges, only: [:new, :create, :index]
   end
@@ -11,5 +11,4 @@ Rails.application.routes.draw do
   post 'log' => 'sessions#log'
   post '/logout' => 'sessions#logout'
   match '/auth/:google_oauth2/callback' => 'sessions#google', via: [:get,:post]
-  get '/projects/local' => 'projects#local'
 end
