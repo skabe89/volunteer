@@ -1,5 +1,6 @@
 <h1><%= @project.title%></h1>
 <h3>Organized by: <%= @project.organizer.name %></h3>
+<h3>Organizer email: <%= @project.organizer.email %></h3>
 <h3><%= @project.community.location.capitalize %>, <%= @project.state.name %></h3>
 <h3><%= @project.date.strftime("%A, %B %d %Y")%></h3>
 <h3><%= @project.address %></h3>
