@@ -1,5 +1,5 @@
 class PledgesController < ApplicationController
-  include SessionsHelper
+  # include SessionsHelper
   before_action :find_project, only: [:index, :new]
 
   def index

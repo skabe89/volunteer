@@ -1,5 +1,5 @@
 class SessionsController < ApplicationController
-  include ErrorsHelper
+  # include ErrorsHelper
 
   def login
   end
@@ -8,7 +8,8 @@ class SessionsController < ApplicationController
     if params[:email]
       @user = User.find_by(email: params[:email])
         if @user && @user.authenticate(params[:password])
-          session[:user_id] = @user.id
+          # session[:user_id] = @user.id
+          log_in_user
           redirect_to root_path
         else @user 
           flash.now[:error] = ["Invalid email or password"]
@@ -23,7 +24,8 @@ class SessionsController < ApplicationController
       user.password = SecureRandom.hex(10)
     end
     if @user && @user.id
-      session[:user_id] = @user.id
+      # session[:user_id] = @user.id
+      log_in_user
       redirect_to edit_user_path(@user)
     else
       # flash.now[:error] = @user.errors.full_messages

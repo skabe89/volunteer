@@ -1,6 +1,6 @@
 class ProjectsController < ApplicationController
-  include ApplicationHelper
-  include SessionsHelper
+  # include ApplicationHelper
+  # include SessionsHelper
   
   before_action :redirect_if_not_logged_in, only: [:index, :new, :create, :edit, :destroy]
   before_action :find_project, only: [:show, :edit, :update, :destroy]
