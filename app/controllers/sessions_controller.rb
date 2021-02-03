@@ -9,8 +9,8 @@ class SessionsController < ApplicationController
         if @user && @user.authenticate(params[:password])
           session[:user_id] = @user.id
           redirect_to root_path
-        else
-          flash.now[:error] = ["Something went wrong, please try again!"]
+        else @user 
+          flash.now[:error] = ["Invalid email or password"]
           render :login
         end
     end

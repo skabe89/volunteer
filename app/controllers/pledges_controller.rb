@@ -1,4 +1,5 @@
 class PledgesController < ApplicationController
+  include SessionsHelper
   before_action :find_project, only: [:index, :new]
 
   def index
@@ -11,7 +12,7 @@ class PledgesController < ApplicationController
   end
 
   def create
-    @pledge = helpers.current_user.pledges.build(pledge_params)
+    @pledge = current_user.pledges.build(pledge_params)
     if @pledge.save
       redirect_to project_path(find_project)
     else

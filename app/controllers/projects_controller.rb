@@ -1,10 +1,10 @@
 class ProjectsController < ApplicationController
-
+  include SessionsHelper
   before_action :find_project, only: [:show, :edit, :update, :destroy]
   before_action :redirect_if_location_is_empty, only: [:new, :index]
 
   def index
-    @projects = Project.where(community_id: helpers.current_user.community.id)
+    @projects = Project.where(community_id: current_user.community.id)
   end
 
   def new
@@ -13,7 +13,7 @@ class ProjectsController < ApplicationController
 
   def create
     @project = Project.new(project_params)
-    @project.organizer_id = helpers.current_user.id
+    @project.organizer_id = current_user.id
     if @project.save
       redirect_to project_path(@project)
     else
