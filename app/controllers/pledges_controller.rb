@@ -15,7 +15,7 @@ class PledgesController < ApplicationController
     if @pledge.save
       redirect_to project_path(find_project)
     else
-      helpers.full_error_messages(@pledge)
+      flash[:error] = @pledge.errors.full_messages
       redirect_to new_project_pledge_path(find_project)
     end
   end
