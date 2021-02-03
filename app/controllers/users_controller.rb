@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
-
+  include SessionsHelper
+  include ErrorsHelper
   def index
   end
 
@@ -14,29 +15,29 @@ class UsersController < ApplicationController
       redirect_to edit_user_path(@user)
     else
       # flash.now[:error] = @user.errors.full_messages
-      helpers.full_error_messages(@user)
+      full_error_messages(@user)
       render :new
     end
   end
 
   def show
-    @user = User.find_by(id: helpers.current_user.id)
+    @user = User.find_by(id: current_user.id)
     @lead_projects = Project.where(organizer_id: @user.id)
   end
 
   def edit
-    @user = helpers.current_user
+    @user = current_user
   end
 
   def update
-    @user = helpers.current_user
+    @user = current_user
     @user.state_id = user_params[:state_id]
     @user.update(user_params)
     if @user.save
       redirect_to root_path
     else
       # flash.now[:error] = @user.errors.full_messages
-      helpers.full_error_messages(@user)
+      full_error_messages(@user)
       render :edit
     end
   end

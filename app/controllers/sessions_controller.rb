@@ -1,4 +1,5 @@
 class SessionsController < ApplicationController
+  include ErrorsHelper
 
   def login
   end
@@ -26,7 +27,7 @@ class SessionsController < ApplicationController
       redirect_to edit_user_path(@user)
     else
       # flash.now[:error] = @user.errors.full_messages
-      helpers.full_error_messages(@user)
+      full_error_messages(@user)
       redirect_to users_path
     end
   end
