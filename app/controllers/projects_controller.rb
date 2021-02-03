@@ -4,6 +4,7 @@ class ProjectsController < ApplicationController
   
   before_action :redirect_if_not_logged_in, only: [:index, :new, :create, :edit, :destroy]
   before_action :find_project, only: [:show, :edit, :update, :destroy]
+  before_action :redirect_if_not_organizer, only: [:edit, :update, :destroy]
   before_action :redirect_if_location_is_empty, only: [:new, :index]
 
   def index
@@ -63,6 +64,12 @@ class ProjectsController < ApplicationController
     if current_user.community.nil?
       flash[:error] = ["Update your location to proceed!"]
       redirect_to edit_user_path(current_user)
+    end
+  end
+
+  def redirect_if_not_organizer
+    if @project.organizer != current_user
+      redirect_to user_path(current_user)
     end
   end
 

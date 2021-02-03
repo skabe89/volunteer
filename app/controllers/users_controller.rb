@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   # include SessionsHelper
   # include ErrorsHelper
-  before_action :redirect_if_not_logged_inn only: [:show, :edit, :update]
+  before_action :redirect_if_not_logged_in, only: [:show, :edit, :update]
 
   def index
   end
