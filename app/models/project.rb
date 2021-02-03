@@ -2,6 +2,7 @@ class Project < ApplicationRecord
   belongs_to :community
   has_many :pledges
   has_many :users, through: :pledges
+  has_one :state, through: :community
 
   validates :title, presence: true
   validates :address, presence: true

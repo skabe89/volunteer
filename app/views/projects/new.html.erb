@@ -1,4 +1,5 @@
-<h1>New Project Page</h1>
+<h1><%= current_user.name %>'s New Project</h1>
+<h3><%=current_user.community.location.capitalize %>, <%=current_user.state.name %></h3>
 
 <%= render partial: 'form', locals: {project: @project}%>
 

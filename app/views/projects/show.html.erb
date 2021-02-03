@@ -1,6 +1,6 @@
 <h1><%= @project.title%></h1>
 <h3>Organized by: <%= @project.organizer.name %></h3>
-<h3><%= @project.community.location %></h3>
+<h3><%= @project.community.location.capitalize %>, <%= @project.state.name %></h3>
 <h3><%= @project.date.strftime("%A, %B %d %Y")%></h3>
 <h3><%= @project.address %></h3>
 <h3><%= @project. description %></h3>
@@ -14,7 +14,7 @@
     <br>
     <%= button_to "Delete", project_path(@project), method: :delete%>
   <%elsif already_pledged?(@project, current_user) %>
-    <h3>You have Pledged your time for this Project!</h3>
+    <h3>Thank you for pledging your time to this Project!</h3>
   <% else %>
     <%= link_to "Pledge Your Time!", new_project_pledge_path(@project) %>
   <%end%>

@@ -19,13 +19,26 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = User.find_by(id: helpers.current_user.id)
+    @user = helpers.current_user
+  end
+
+  def update
+    @user = helpers.current_user
+    @user.state_id = user_params[:state_id]
+    @user.update(user_params)
+    if @user.save
+      redirect_to root_path
+    else
+      flash.now[:error] = @user.errors.full_messages
+      render :edit
+    end
   end
 
   private
 
   def user_params
-    params.require(:user).permit(:name, :email, :password, :community_id)
+    params.require(:user).permit(:name, :email, :password, :state_id, community_attributes: [:location])
   end
-  
+
+
 end

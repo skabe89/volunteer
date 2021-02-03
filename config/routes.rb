@@ -11,4 +11,5 @@ Rails.application.routes.draw do
   post 'log' => 'sessions#log'
   post '/logout' => 'sessions#logout'
   match '/auth/:google_oauth2/callback' => 'sessions#google', via: [:get,:post]
+  get '/projects/local' => 'projects#local'
 end

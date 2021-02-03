@@ -1,0 +1,7 @@
+<h1>Projects in Your Area</h1>
+
+<ul>
+  <% @projects.each do |project| %>
+    <li><h2><%=link_to project.title, project_path(project)%></h2></li>
+  <%end%>
+</ul>

@@ -7,6 +7,8 @@
       <li><%= link_to "Log in with Google", '/auth/google_oauth2', method: :post %></li>
     <% else %>
       <li><%= link_to "Home", root_path %></li>
+      <li><%= link_to "Local Projects", projects_local_path %> </li>
+      <li><%= link_to "Edit My Info", edit_user_path(current_user) %></li>
       <li><%= link_to "New Project", new_project_path %> </li>
       <li><%= link_to "Logout", logout_path, method: :post %></li>
     <%end%>
