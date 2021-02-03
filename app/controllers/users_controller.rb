@@ -19,7 +19,8 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find_by(id: params[:id])
+    @user = User.find_by(id: helpers.current_user.id)
+    @lead_projects = Project.where(organizer_id: @user.id)
   end
 
   def edit

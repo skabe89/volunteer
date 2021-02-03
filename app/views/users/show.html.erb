@@ -4,7 +4,20 @@
 <h3>Upcoming Projects</h3>
 <br>
 <ul>
+
+<% if !@lead_projects.empty? %>
+  <h3>Projects You're Leading</h3>
+  <% @lead_projects.each do |p| %>
+  <li>
+    <%= link_to p.title, project_path(p) %>
+    <%= p.readable_date %>
+  </li>  
+  <% end %>
+<% end %>
+
+
 <% if @user.pledges %>
+  <h3>Projects You're Participating In</h3>
   <% @user.pledges.each do |p|  %>
     <li>
     <%= link_to p.project.title, project_path(p.project) %>
