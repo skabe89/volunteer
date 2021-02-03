@@ -25,7 +25,8 @@ class SessionsController < ApplicationController
       session[:user_id] = @user.id
       redirect_to edit_user_path(@user)
     else
-      flash.now[:error] = @user.errors.full_messages
+      # flash.now[:error] = @user.errors.full_messages
+      helpers.full_error_messages(@user)
       redirect_to users_path
     end
   end
