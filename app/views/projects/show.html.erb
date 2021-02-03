@@ -12,6 +12,7 @@
   .sideStatus {
     background-color: #dddd;
     padding: 10px, 10px, 10px, 10px;
+    border: 1px solid grey;
   }
 
   .projectTitle {
@@ -26,19 +27,22 @@
     <h1><%= @project.title%></h1>
     <h5><%= @project.community.location.capitalize %>, <%= @project.state.name %></h5>
   </div>
-  <div class="col s8">
-    <h3>Organized by: <%= @project.organizer.name %></h3>
-    <h4>Organizer email: <%= @project.organizer.email %></h4>
+  <div class="col s6 offset-s1">
+    <h4>Project description</h4>
+    <h6><%= @project. description %></h6>
+    <h6>Estimated Combined Hours Needed: <%= @project.estimated_hours %></h6>
     <br>
-    <h4 class="center-align">Project description</h4>
-    <h5><%= @project. description %></h5>
-    <h5><%= @project.date.strftime("%A, %B %d %Y")%></h5>
-    <h5><%= @project.address %></h5>
-    <h6>Estimated Total Time Needed: <%= @project.estimated_hours %> hours</h6>
+    <h4>When/Where</h4>
+    <h6><%= @project.date.strftime("%A, %B %d %Y")%></h6>
+    <h6><%= @project.address %></h6>
+    <br>
+    <h5>Organized by: <%= @project.organizer.name %></h5>
+    <h5>Organizer email: <%= @project.organizer.email %></h5>
   </div>
   
   <!-- <div class="col s12 m4"> -->
-  <div class="sideStatus col s4">
+  <div class="sideStatus col s4 center-align">
+  <br>
     <h6>Pledged hours left until we reach our goal: <%= pledge_time_remaining(@project)%>!</h6>
     <br>
     <h6><%= @project.pledges.length %>/<%= @project.min_volunteers %> Volunteers Commited!</h6>
@@ -46,6 +50,7 @@
     <h6>Recent Activity</h6>
     <h6><%= render partial: 'pledges', locals: {pledges: @pledges} %></h6>
     <h6><%= link_to "View All Pledges", project_pledges_path(@project) %></h6>
+    <br>
   </div>
   <!-- </div> -->
 
