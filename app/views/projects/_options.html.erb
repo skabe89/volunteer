@@ -4,7 +4,8 @@
     <br>
     <%= button_to "Delete", project_path(project), method: :delete%>
   <%elsif already_pledged?(project, current_user) %>
-    <h3>Thank you for pledging your time to this Project!</h3>
+    <h5 class="center-align">Thank you for pledging your time to this Project!</h5>
+    <br>
   <% elsif project.state == current_user.state %>
     <%= link_to "Pledge Your Time!", new_project_pledge_path(project) %>
   <%end%>

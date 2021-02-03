@@ -51,5 +51,4 @@ class UsersController < ApplicationController
     params.require(:user).permit(:name, :email, :password, :state_id, community_attributes: [:location])
   end
 
-
 end

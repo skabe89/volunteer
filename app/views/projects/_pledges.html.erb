@@ -1,0 +1,9 @@
+
+<ul>
+<li>
+  <% pledges.each do |pledge| %>
+  <%= pledge.user.name %> pledged <%= pledge.hours%> hours <%= pledge.created_at.strftime("- %a %b %d") %> <br>
+  <br>
+  <% end %>
+</li>
+</ul>

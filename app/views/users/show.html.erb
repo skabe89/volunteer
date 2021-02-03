@@ -1,5 +1,7 @@
-<h1>User Show Page</h1>
+<div class="container">
+<div class="center-align">
 <h1><%= @user.name %></h1>
+</div>
 <h3><%= @user.community.location_name %>, <%= @user.state.name %></h3>
 <h3>Upcoming Projects</h3>
 <br>
@@ -20,10 +22,11 @@
   <h3>Projects You're Participating In</h3>
   <% @user.pledges.each do |p|  %>
     <li>
-    <%= link_to p.project.title, project_path(p.project) %>
-    <%= p.project.readable_date %>
-    <%= p.hours%>
+    <h6><%= link_to p.project.title, project_path(p.project) %>
+    <%= p.project.readable_date %> <br>
+    <%= p.hours%> hours pledged</h6>
     </li>
   <% end %>
 <% end %>
 </ul>
+</div>
