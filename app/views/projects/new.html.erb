@@ -2,7 +2,7 @@
   <h1><%= current_user.name %>'s New Project</h1>
   <h3><%=current_user.community.location.capitalize %>, <%=current_user.state.name %></h3>
 </div>
-<%= render partial: 'form', locals: {project: @project}%>
+<%= render partial: 'form', locals: {project: @project, button_name: "Create Project"}%>
 
 
 

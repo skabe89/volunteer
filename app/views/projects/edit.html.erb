@@ -1,8 +1,8 @@
 
 <div class="center-align">
   <h1>Edit Project Page</h1>
-<%= button_to "Delete Project", project_path(@project), method: :delete, :class => "waves-effect waves-light btn red"%>
+<%= button_to "Delete Project", project_path(@project), method: :delete, :class => "btn red"%>
 </div>
 
-<%= render partial: 'form', locals: {project: @project}%>
+<%= render partial: 'form', locals: {project: @project, button_name: "Edit Project"}%>
 

@@ -71,7 +71,7 @@
     <h6>Recent Activity</h6>
     <h6><%= render partial: 'pledges', locals: {pledges: @pledges} %></h6>
     <% if @project.pledges.length > 3 %>
-      <%= button_to "View All Pledges", project_pledges_path(@project), method: :get, :class => "waves-effect waves-light btn green lighten-2 white-text"%>
+      <%= button_to "View All Pledges", project_pledges_path(@project), method: :get, :class => "btn green lighten-1 white-text"%>
     <% end %>
     <br>
   </div>
@@ -93,7 +93,7 @@
 
     <% if @project.pledges.length > 3 %>
     <div class="center-align">
-      <%= button_to "View All Pledges", project_pledges_path(@project), method: :get, :class => "waves-effect waves-light btn green lighten-2 white-text"%>
+      <%= button_to "View All Pledges", project_pledges_path(@project), method: :get, :class => "btn green lighten-1 white-text"%>
     </div>
     <% end %>
   </div>
