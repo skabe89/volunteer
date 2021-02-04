@@ -6,7 +6,7 @@
     <h5 class="center-align">Thank you for pledging your time to this Project!</h5>
     <br>
   <% elsif project.state == current_user.state %>
-    <b><%= button_to "Volunteer Now", new_project_pledge_path(project), method: :get, :class => "tn-large yellow darken-1 black-text"%></b>
+    <b><%= button_to "Volunteer Now", new_project_pledge_path(project), method: :get, :class => "btn-large yellow darken-1 black-text"%></b>
   <%end%>
 <%end%> 
 

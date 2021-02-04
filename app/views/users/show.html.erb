@@ -1,3 +1,11 @@
+<style>
+  .div1 {
+    border-bottom: 1px solid grey;
+  }
+</style>
+
+
+
 <div class="container">
   <div class="center-align">
     <h1><%= @user.name %></h1>
@@ -6,29 +14,37 @@
       <% end %>
       <%= button_to "Update Location", edit_user_path, method: :get, :class => "btn green lighten-1 white-text"%>
   </div>
-  <h3>Upcoming Projects</h3>
   <br>
   <ul>
     <% if !@lead_projects.empty? %>
       <h3><b>Projects You're Leading</b></h3>
       <% @lead_projects.each do |p| %>
+      <div class="div1">
       <li>
         <h5><%= link_to p.title, project_path(p) %>
         <%= p.readable_date %></h5>
-      </li>  
+        <br>
+        <%= button_to "Edit Project", edit_project_path(p), method: :get, :class => "btn-small green lighten-1 white-text" %>
+      </li>
+      <br>
+      </div>  
       <% end %>
     <% end %>
   <br>
   <br>
-    <% if @user.pledges %>
+    <% if !@user.pledges.empty? %>
       <h3><b>Projects You're Participating In</b></h3>
       <% @user.pledges.each do |p|  %>
+      <div class="div1">
         <li>
         <h5><%= link_to p.project.title, project_path(p.project) %>
         <%= p.project.readable_date %> <br>
         <%= p.hours%> hours pledged</h5>
+        <br>
         <%= button_to "Cancel Pledge", pledge_path(p), method: :delete, :class => "btn-small red lighten-1 white-text"%>
+        <br>
         </li>
+      </div>  
       <% end %>
     <% end %>
   </ul>
