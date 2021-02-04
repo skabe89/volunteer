@@ -1,17 +1,22 @@
-
-<%= form_for @user do |f| %>
-<h3>State</h3>
-  <%= f.collection_select :state_id, State.all, :id, :name, include_blank: "Select State" %>
-  <br>
-<h3>Community</h3>
-  <%= f.fields_for :community, @user.build_community do |b| %>
-    <%= b.label "City or Township" %> <br>
-    <%= b.text_field :location %>
+<div class="container row">
+  <div  class="col s8 offset-s2">
+  <%= form_for @user do |f| %>
+  <h3>State</h3>
+    <%= f.collection_select :state_id, State.all, :id, :name, include_blank: "Select State" %>
+    <br>
+  <h3>Community</h3>
+    <%= f.fields_for :community, @user.build_community do |b| %>
+      <%= b.label "City or Township" %> <br>
+      <%= b.text_field :location %>
+    <% end %>
+    <br>
+    <br>
+  <%= f.submit %>
   <% end %>
-  <br>
-  <br>
-<%= f.submit %>
-<% end %>
-
+  </div>
+</div>
 <!--@user.state = State.find_by(:id => params[:state_id])
 @user.community = community.find_or_create_by(:state_id => params[:state_id], :name => params[:name]) -->
+<script>$(document).ready(function(){
+    $('select').formSelect();
+  });</script>
