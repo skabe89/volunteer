@@ -6,6 +6,7 @@
   
   <nav class="container white">
   
+    <b><a href="/" class="brand-logo center green-text bold">Go Local!</a></b>
 
     <%if !is_logged_in? %>
     <ul class="left black-text">
@@ -23,9 +24,9 @@
       <li><%= link_to "Local Projects", projects_path %> </li>
     </ul>
     <ul class="right black-text">
+      <li><%= link_to "New Project", new_project_path %> </li>
       <li><%= link_to "My Stuff", user_path(current_user) %> </li>
       <li><%= link_to "Edit My Info", edit_user_path(current_user) %></li>
-      <li><%= link_to "New Project", new_project_path %> </li>
       <li><%= link_to "Logout", logout_path, method: :post %></li>
     </ul>
     <%end%>

@@ -3,19 +3,21 @@
 <h1>Login</h1>
 </div>
 
-<div class="container">
-  <%= form_tag ({controller: 'sessions', action: 'log', method: 'post'}) do %>
-  <div class="input-field col s12 l6">
-  <label>Email: </label> <br>
-  <input type=email name=email>
+<div class="container row">
+  <div class="col s8 offset-s2">
+    <%= form_tag ({controller: 'sessions', action: 'log', method: 'post'}) do %>
+      <div class="input-field">
+      <label>Email: </label> <br>
+      <input type=email name=email>
+      </div>
+      <br>
+      <div class="input-field">
+      <label>Password: </label> <br>
+      <input type=password name=password>
+      </div>
+      <br>
+      <br>
+      <input type=submit value='login'>
+    <%end%>
   </div>
-  <br>
-  <div class="input-field col s12 l6">
-  <label>Password: </label> <br>
-  <input type=password name=password>
-  </div>
-  <br>
-  <br>
-  <input type=submit value='login'>
-<%end%>
 </div>

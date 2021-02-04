@@ -1,12 +1,12 @@
 <% if is_logged_in? %>
   <% if current_user == project.organizer %>
-    <%= button_to "Edit", edit_project_path(project), method: :get %>
+    <%= button_to "Edit Project", edit_project_path(project), method: :get, :class => "waves-effect waves-light btn-large blue lighten-2" %>
     <br>
-    <%= button_to "Delete", project_path(project), method: :delete%>
-  <%elsif already_pledged?(project, current_user) %>
+  <% elsif already_pledged?(project, current_user) %>
     <h5 class="center-align">Thank you for pledging your time to this Project!</h5>
     <br>
   <% elsif project.state == current_user.state %>
-    <%= button_to "Pledge Your Time!", new_project_pledge_path(project), method: :get %>
+    <%= button_to "Volunteer Now", new_project_pledge_path(project), method: :get, :class => "waves-effect waves-light btn-large yellow darken-1 black-text"%>
   <%end%>
-<%end%>
+<%end%> 
+

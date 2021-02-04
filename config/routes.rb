@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :projects do
     resources :pledges, only: [:new, :create, :index]
   end
+  resources :pledges, only: [:destroy]
   
 
   root to: 'static#home'

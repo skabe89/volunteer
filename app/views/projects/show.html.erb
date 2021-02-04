@@ -10,23 +10,30 @@
 }
 
   .sideStatus {
-    background-color: #dddd;
+    background-color: #efebe9;
     padding: 10px, 10px, 10px, 10px;
-    border: 1px solid grey;
+    border: 1px solid #d7ccc8;
   }
 
   .projectTitle {
     text-align: center;
     padding-bottom: 50px;
   }
+
+  .div1 {
+    border-bottom: 1px solid grey;
+  }
+
 </style>
 
 
 <div class="container row">
   <div class="projectTitle">
-    <h1><%= @project.title%></h1>
+    <h1><b><%= @project.title%></b></h1>
     <h5><%= @project.community.location.capitalize %>, <%= @project.state.name %></h5>
   </div>
+
+  
   <div class="col s6 offset-s1">
     <h4>Project description</h4>
     <h6><%= @project. description %></h6>
@@ -38,18 +45,34 @@
     <br>
     <h5>Organized by: <%= @project.organizer.name %></h5>
     <h5>Organizer email: <%= @project.organizer.email %></h5>
+    <br>
+    <!-- <% if is_logged_in? %>
+      <% if current_user == @project.organizer %>
+        <%= button_to "Edit Project", edit_project_path(@project), method: :get, :class => "waves-effect waves-light btn yellow darken-1 black-text" %>
+      <% end %>
+    <% end %>
+      <br> -->
   </div>
   
   <!-- <div class="col s12 m4"> -->
   <div class="sideStatus col s4 center-align">
-  <br>
-    <h6>Pledged hours left until we reach our goal: <%= pledge_time_remaining(@project)%>!</h6>
+    <br>
+      <%= render partial: 'options', locals: {project: @project} %>
+    <br>
+    <br>
+    <% if pledge_time_remaining(@project) > 0 %>
+      <h6>Pledged hours left until we reach our goal: <%= pledge_time_remaining(@project)%>!</h6>
+    <% else %>
+      <h6>Work hours goal has been met!!!</h6>
+    <% end %>
     <br>
     <h6><%= @project.pledges.length %>/<%= @project.min_volunteers %> Volunteers Commited!</h6>
     <br>
     <h6>Recent Activity</h6>
     <h6><%= render partial: 'pledges', locals: {pledges: @pledges} %></h6>
-    <h6><%= link_to "View All Pledges", project_pledges_path(@project) %></h6>
+    <% if @project.pledges.length > 3 %>
+      <%= button_to "View All Pledges", project_pledges_path(@project), method: :get, :class => "waves-effect waves-light btn green lighten-2 white-text"%>
+    <% end %>
     <br>
   </div>
   <!-- </div> -->
@@ -57,15 +80,21 @@
 </div>
 
 <div class="container row">
-  <div class="col s8">
-    <%= render partial: 'options', locals: {project: @project} %>
+  <div class="col s8 offset-s2">
+    <!-- <%= render partial: 'options', locals: {project: @project} %> -->
+
+  <div class="div1">
+    <h3>Activity(<%= @project.pledges.length %>)</h3>
+  </div>
 
     <ul>
       <h5 class="center-align"><%= render @pledges %></h5>
     </ul>
 
     <% if @project.pledges.length > 3 %>
-      <h5 class="center-align"><%= link_to "View All Pledges", project_pledges_path(@project) %></h5>
+    <div class="center-align">
+      <%= button_to "View All Pledges", project_pledges_path(@project), method: :get, :class => "waves-effect waves-light btn green lighten-2 white-text"%>
+    </div>
     <% end %>
   </div>
 </div>

@@ -1,32 +1,34 @@
 <div class="container">
-<div class="center-align">
-<h1><%= @user.name %></h1>
-</div>
-<h3><%= @user.community.location_name %>, <%= @user.state.name %></h3>
-<h3>Upcoming Projects</h3>
-<br>
-<ul>
+  <div class="center-align">
+    <h1><%= @user.name %></h1>
+      <% if !@user.community.nil?%>
+        <h3><%= @user.community.location_name %>, <%= @user.state.name %></h3>
+      <% end %>
+  </div>
+  <h3>Upcoming Projects</h3>
+  <br>
+  <ul>
+    <% if !@lead_projects.empty? %>
+      <h3>Projects You're Leading</h3>
+      <% @lead_projects.each do |p| %>
+      <li>
+        <%= link_to p.title, project_path(p) %>
+        <%= p.readable_date %>
+      </li>  
+      <% end %>
+    <% end %>
 
-<% if !@lead_projects.empty? %>
-  <h3>Projects You're Leading</h3>
-  <% @lead_projects.each do |p| %>
-  <li>
-    <%= link_to p.title, project_path(p) %>
-    <%= p.readable_date %>
-  </li>  
-  <% end %>
-<% end %>
 
-
-<% if @user.pledges %>
-  <h3>Projects You're Participating In</h3>
-  <% @user.pledges.each do |p|  %>
-    <li>
-    <h6><%= link_to p.project.title, project_path(p.project) %>
-    <%= p.project.readable_date %> <br>
-    <%= p.hours%> hours pledged</h6>
-    </li>
-  <% end %>
-<% end %>
-</ul>
+    <% if @user.pledges %>
+      <h3>Projects You're Participating In</h3>
+      <% @user.pledges.each do |p|  %>
+        <li>
+        <h6><%= link_to p.project.title, project_path(p.project) %>
+        <%= p.project.readable_date %> <br>
+        <%= p.hours%> hours pledged</h6>
+        <%= button_to "Cancel Pledge", pledge_path(p), method: :delete%>
+        </li>
+      <% end %>
+    <% end %>
+  </ul>
 </div>

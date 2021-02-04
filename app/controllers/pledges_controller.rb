@@ -1,5 +1,6 @@
 class PledgesController < ApplicationController
   # include SessionsHelper
+  before_action :redirect_if_not_logged_in
   before_action :find_project, only: [:index, :new]
 
   def index
@@ -19,6 +20,12 @@ class PledgesController < ApplicationController
       flash[:error] = @pledge.errors.full_messages
       redirect_to new_project_pledge_path(find_project)
     end
+  end
+
+  def destroy
+    @pledge = Pledge.find_by(id: params[:id])
+    @pledge.destroy
+    redirect_to user_path(current_user)
   end
 
   private

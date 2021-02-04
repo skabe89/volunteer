@@ -5,12 +5,14 @@
 </style>
 
 
-<li>
 <div class="div1">
-<br>
-  <%= pledge.user.name %> pledged <%= pledge.hours%> hours <%= pledge.created_at.strftime("- %a %b %d") %> <br>
-  <%= pledge.comment if pledge.comment %>
-<br>
-<br>
+
+  <li>
+    <br>
+      <%= pledge.user.name %> pledged <%= pledge.hours%> hours <%= pledge.created_at.strftime("- %a %b %d") %> <br>
+      <%= pledge.comment if pledge.comment %>
+    <br>
+    <br>
+  </li>
+
 </div>
-</li>

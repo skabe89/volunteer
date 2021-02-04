@@ -3,5 +3,6 @@ class State < ApplicationRecord
   has_many :communities
   has_many :users, through: :communities
   has_many :projects, through: :communities
+  validates :name, presence: true
 
 end

@@ -26,7 +26,11 @@ class SessionsController < ApplicationController
     if @user && @user.id
       # session[:user_id] = @user.id
       log_in_user
-      redirect_to edit_user_path(@user)
+      if @user.community.nil?
+        redirect_to edit_user_path(@user)
+      else
+        redirect_to root_path
+      end
     else
       # flash.now[:error] = @user.errors.full_messages
       full_error_messages(@user)
@@ -36,7 +40,7 @@ class SessionsController < ApplicationController
 
   def logout
     session.clear
-    redirect_to users_path
+    redirect_to root_path
   end
 
 
