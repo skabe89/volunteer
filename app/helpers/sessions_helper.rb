@@ -1,6 +1,7 @@
 module SessionsHelper
 
   def log_in_user
+    helpers.reformat_old_projects
     session[:user_id] = @user.id
   end
 

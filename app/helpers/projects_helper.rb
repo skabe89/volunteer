@@ -10,4 +10,12 @@ module ProjectsHelper
     !pledge.empty?
   end
 
+  def reformat_old_projects
+    @projects = Project.where('date < ?', "#{Date.today}")
+    @projects.each do |p|
+      p.pledges.destroy_all
+      p.save
+    end
+  end
+
 end

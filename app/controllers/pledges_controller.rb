@@ -1,5 +1,4 @@
 class PledgesController < ApplicationController
-  # include SessionsHelper
   before_action :redirect_if_not_logged_in
   before_action :find_project, only: [:index, :new]
 

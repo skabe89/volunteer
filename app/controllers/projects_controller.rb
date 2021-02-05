@@ -1,14 +1,12 @@
-class ProjectsController < ApplicationController
-  # include ApplicationHelper
-  # include SessionsHelper
-  
+class ProjectsController < ApplicationController  
   before_action :redirect_if_not_logged_in, only: [:index, :new, :create, :edit, :destroy]
   before_action :find_project, only: [:show, :edit, :update, :destroy]
   before_action :redirect_if_not_organizer, only: [:edit, :update, :destroy]
   before_action :redirect_if_location_is_empty, only: [:new, :index]
 
   def index
-    @projects = Project.where(community_id: current_user.community.id)
+    # @projects = Project.where(community_id: current_user.community.id,).order("date ASC")
+    @projects = Project.where('community_id = ? and date >= ?', "#{current_user.community.id}", "#{Date.today}").order("date ASC")
   end
 
   def new

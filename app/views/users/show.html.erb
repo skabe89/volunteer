@@ -17,12 +17,14 @@
   <br>
 
   <div class="row">
-  <div class="col s8 offset-s2">
-    <%= render partial: 'projects/calender', locals: {projects: @projects}%>
-  </div>
+    <div class="col s8 offset-s2">
+      <%= render partial: 'projects/calender', locals: {projects: @projects}%>
+    </div>
   </div>
 
   <br>
+<div class="row">
+  <div class="col s10 offset-s1">
   <ul>
     <% if !@lead_projects.empty? %>
       <h3><b>Projects You're Leading</b></h3>
@@ -40,6 +42,7 @@
     <% end %>
   <br>
   <br>
+  <div class="right-align">
     <% if !@user.pledges.empty? %>
       <h3><b>Projects You're Participating In</b></h3>
       <% @user.pledges.each do |p|  %>
@@ -55,5 +58,8 @@
       </div>  
       <% end %>
     <% end %>
+  </div>
   </ul>
+</div>
+</div>
 </div>

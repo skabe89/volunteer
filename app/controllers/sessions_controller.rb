@@ -1,6 +1,5 @@
 class SessionsController < ApplicationController
-  # include ErrorsHelper
-
+  
   def login
   end
 
