@@ -5,10 +5,11 @@ class Project < ApplicationRecord
   has_one :state, through: :community
 
   validates :title, presence: true
+  validates :date, presence: true
   validates :address, presence: true
   validates :description, presence: true
-  validates :min_volunteers, presence: true
   validates :estimated_hours, presence: true
+  # validates :min_volunteers, presence: true
 
   def organizer
     User.find_by(id: self.organizer_id)

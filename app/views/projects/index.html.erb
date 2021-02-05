@@ -20,8 +20,10 @@
       <div class="card-panel m4">
         <h5 class="center-align"><%=link_to project.title, project_path(project)%></h5>
         <h6><%= project.community.location.capitalize %>, <%= project.state.name %></h6>
-        <h6><%= project.date %></h6>
-        <h6><%= project.pledges.length %>/<%= project.min_volunteers %> volunteers commited</h6>
+        <h6><%= project.readable_date %></h6>
+        <!-- <h6><%= project.pledges.length %>/<%= project.min_volunteers %> volunteers commited</h6> -->
+        <h6><%= project.pledges.length%> pledges</h6>
+        <h6><%= pledge_time_remaining(project)%> pledged-hours until goal met</h6>
       </div>
       <%end%>
     </ul>

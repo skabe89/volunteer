@@ -37,7 +37,7 @@
   <div class="col s6 offset-s1">
     <h4>Project description</h4>
     <h6><%= @project. description %></h6>
-    <h6>Estimated Combined Hours Needed: <%= @project.estimated_hours %></h6>
+    <h6>Estimated Hours Needed: <%= @project.estimated_hours %></h6>
     <br>
     <h4>When/Where</h4>
     <h6><%= @project.date.strftime("%A, %B %d %Y")%></h6>
@@ -57,16 +57,20 @@
   <!-- <div class="col s12 m4"> -->
   <div class="sideStatus col s4 center-align">
     <br>
-      <%= render partial: 'options', locals: {project: @project} %>
-    <br>
-    <br>
     <% if pledge_time_remaining(@project) > 0 %>
-      <h6 class="purple-text text-lighten-3"><b>Pledged hours left until we reach our goal: <%= pledge_time_remaining(@project)%>!</b></h6>
+      <h6><b><%= pledge_time_remaining(@project)%> pledged-hours left until we reach our goal</b></h6>
+      <progress value=<%=total_pledge_time(@project)%> max=<%= @project.estimated_hours %>></progress>
     <% else %>
       <h6>Work hours goal has been met!!!</h6>
+      <progress value=<%=total_pledge_time(@project)%> max=<%= @project.estimated_hours %>></progress>
     <% end %>
+    <!-- <h6><b><%= @project.pledges.length %>/<%= @project.min_volunteers %> Volunteers Commited!</b></h6>
+    <progress value=<%=@project.pledges.length%> max=<%= @project.min_volunteers %>></progress> -->
     <br>
-    <h6><b><%= @project.pledges.length %>/<%= @project.min_volunteers %> Volunteers Commited!</b></h6>
+    <br>
+      <%= render partial: 'options', locals: {project: @project} %>
+    <br>
+    <h6 class="purple-text text-lighten-2"><b><%= @project.date.mjd - Date.today.mjd %> days left until go time!</b></h6>
     <br>
     <h6><b>Recent Activity</b></h6>
     <h6 class="left-align"><%= render partial: 'pledges', locals: {pledges: @pledges} %></h6>
