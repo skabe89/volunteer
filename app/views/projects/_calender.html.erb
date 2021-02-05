@@ -1,0 +1,10 @@
+  <%= month_calendar(events: projects) do |date, projects| %>
+    <%= date.day %>
+    <%if !projects.nil? %>
+      <% projects.each do |project| %>
+        <div>
+          <%= link_to project.title, project_path(project) %>
+        </div>
+      <% end %>
+    <% end %>
+  <% end %>

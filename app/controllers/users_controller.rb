@@ -26,6 +26,7 @@ class UsersController < ApplicationController
   def show
     @user = current_user
     @lead_projects = Project.where(organizer_id: @user.id)
+    @projects = @lead_projects + @user.projects
   end
 
   def edit

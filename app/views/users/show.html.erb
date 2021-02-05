@@ -15,6 +15,14 @@
       <%= button_to "Update Location", edit_user_path, method: :get, :class => "btn green lighten-1 white-text"%>
   </div>
   <br>
+
+  <div class="row">
+  <div class="col s8 offset-s2">
+    <%= render partial: 'projects/calender', locals: {projects: @projects}%>
+  </div>
+  </div>
+
+  <br>
   <ul>
     <% if !@lead_projects.empty? %>
       <h3><b>Projects You're Leading</b></h3>

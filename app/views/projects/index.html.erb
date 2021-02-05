@@ -1,7 +1,19 @@
+<style>
+  .calender {
+    padding: 40px, 0px, 80px, 0px;
+  }
+</style>
+
+<div class="container row">
+    <div class="col s8 offset-s2">
+    <h1 class="center-align">Projects in <%= current_user.community.location_name %></h1>
+      <%= render partial: 'projects/calender', locals: {projects: @projects}%>
+    </div>
+</div>   
+
 <div class="container row">
   <div class ="col s10 offset-s1">
 
-    <h1 class="center-align">Projects in Your Area</h1>
 
     <ul>
       <% @projects.each do |project| %>

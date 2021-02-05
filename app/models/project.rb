@@ -18,4 +18,8 @@ class Project < ApplicationRecord
     self.date.strftime("%A, %B %d %Y")
   end
 
+  def start_time
+    self.date
+  end
+
 end
