@@ -34,7 +34,7 @@
   </div>
 
   
-  <div class="col s6 offset-s1">
+  <div class="col s5 offset-s1">
     <h4>Project description</h4>
     <h6><%= @project. description %></h6>
     <h6>Estimated Hours Needed: <%= @project.estimated_hours %></h6>
@@ -46,16 +46,10 @@
     <h5>Organized by: <%= @project.organizer.name %></h5>
     <h5>Organizer email: <%= @project.organizer.email %></h5>
     <br>
-    <!-- <% if is_logged_in? %>
-      <% if current_user == @project.organizer %>
-        <%= button_to "Edit Project", edit_project_path(@project), method: :get, :class => "waves-effect waves-light btn yellow darken-1 black-text" %>
-      <% end %>
-    <% end %>
-      <br> -->
   </div>
   
-  <!-- <div class="col s12 m4"> -->
-  <div class="sideStatus col s4 center-align">
+  
+  <div class="sideStatus col s5 center-align">
     <br>
     <% if pledge_time_remaining(@project) > 0 %>
       <h6><b><%= pledge_time_remaining(@project)%> pledged-hours left until we reach our goal</b></h6>
@@ -70,7 +64,7 @@
     <br>
       <%= render partial: 'options', locals: {project: @project} %>
     <br>
-    <h6 class="purple-text text-lighten-2"><b><%= @project.date.mjd - Date.today.mjd %> days left until go time!</b></h6>
+    <h6 class="purple-text text-lighten-2"><b><%= @project.date.mjd - Date.today.mjd %> days left until project date!</b></h6>
     <br>
     <h6><b>Recent Activity</b></h6>
     <h6 class="left-align"><%= render partial: 'pledges', locals: {pledges: @pledges} %></h6>
@@ -79,20 +73,19 @@
     <% end %>
     <br>
   </div>
-  <!-- </div> -->
+  
 
 </div>
 
 <div class="container row">
   <div class="col s8 offset-s2">
-    <!-- <%= render partial: 'options', locals: {project: @project} %> -->
-
+ 
   <div class="div1">
-    <h3>Activity(<%= @project.pledges.length %>)</h3>
+    <h4>Activity(<%= @project.pledges.length %>)</h4>
   </div>
 
     <ul>
-      <h5><%= render @pledges %></h5>
+      <h6><%= render @pledges %></h6>
     </ul>
 
     <% if @project.pledges.length > 3 %>
@@ -100,5 +93,6 @@
       <%= button_to "View All Pledges", project_pledges_path(@project), method: :get, :class => "btn green lighten-1 white-text"%>
     </div>
     <% end %>
+
   </div>
 </div>

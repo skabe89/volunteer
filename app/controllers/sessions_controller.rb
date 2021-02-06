@@ -1,5 +1,7 @@
 class SessionsController < ApplicationController
-  
+
+  before_action :redirect_if_not_logged_in, only: [:logout]
+
   def login
   end
 
@@ -7,7 +9,6 @@ class SessionsController < ApplicationController
     if params[:email]
       @user = User.find_by(email: params[:email])
         if @user && @user.authenticate(params[:password])
-          # session[:user_id] = @user.id
           log_in_user
           redirect_to root_path
         else @user 
@@ -23,7 +24,6 @@ class SessionsController < ApplicationController
       user.password = SecureRandom.hex(10)
     end
     if @user && @user.id
-      # session[:user_id] = @user.id
       log_in_user
       if @user.community.nil?
         redirect_to edit_user_path(@user)
@@ -31,7 +31,6 @@ class SessionsController < ApplicationController
         redirect_to root_path
       end
     else
-      # flash.now[:error] = @user.errors.full_messages
       full_error_messages(@user)
       redirect_to users_path
     end

@@ -4,10 +4,10 @@
     }    
   </style>
   
+<div class="navbar-fixed container">
   <nav class="container white">
-  
+    <div class="nav-wrapper">
     <b><a href="/" class="brand-logo center green-text bold">Go Local!</a></b>
-
     <%if !is_logged_in? %>
     <ul class="left black-text">
       <li><%= link_to "Home", root_path %></li>
@@ -31,5 +31,6 @@
     </ul>
     <%end%>
 
-  
+  </div>
   </nav>
+  </div>

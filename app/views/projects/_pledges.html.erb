@@ -8,7 +8,7 @@
   <li>
     <% pledges.each do |pledge| %>
       <div class="div1">
-        <i class="small material-icons" style="color:green">person &ensp;</i> <%= pledge.user.name %> pledged <%= pledge.hours%> hours <%= pledge.created_at.strftime("- %a %b %d") %> <br>
+        <i class="small material-icons" style="color:green">person &ensp;</i> <%= pledge.user.name %> pledged <%= pledge.hours%> hours <%= pledge.created_at.strftime("-%b %d") %> <br>
         <br>
       </div>
       <br>
