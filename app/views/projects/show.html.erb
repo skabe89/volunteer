@@ -55,7 +55,7 @@
       <h6><b><%= pledge_time_remaining(@project)%> pledged-hours left until we reach our goal</b></h6>
       <progress value=<%=total_pledge_time(@project)%> max=<%= @project.estimated_hours %>></progress>
     <% else %>
-      <h6>Work hours goal has been met!!!</h6>
+      <h6><b>Volutnteer hours goal has been met!!!</b></h6>
       <progress value=<%=total_pledge_time(@project)%> max=<%= @project.estimated_hours %>></progress>
     <% end %>
     <!-- <h6><b><%= @project.pledges.length %>/<%= @project.min_volunteers %> Volunteers Commited!</b></h6>

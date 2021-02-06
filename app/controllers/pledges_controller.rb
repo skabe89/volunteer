@@ -3,7 +3,6 @@ class PledgesController < ApplicationController
   before_action :find_project, only: [:index, :new]
 
   def index
-    find_project
     @pledges = @project.pledges.reverse
   end
 
