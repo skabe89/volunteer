@@ -23,7 +23,11 @@
         <h6><%= project.readable_date %></h6>
         <!-- <h6><%= project.pledges.length %>/<%= project.min_volunteers %> volunteers commited</h6> -->
         <h6><%= project.pledges.length%> pledges</h6>
-        <h6><%= pledge_time_remaining(project)%> pledged-hours until goal met</h6>
+        <% if pledge_time_remaining(project) > 0 %>
+          <h6><%= pledge_time_remaining(project)%> pledged-hours until goal met</h6>
+        <% else %>
+          <h6>Pledge Goals have been met!</h6>
+        <% end %>
       </div>
       <%end%>
     </ul>

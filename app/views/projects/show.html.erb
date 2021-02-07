@@ -10,9 +10,10 @@
 }
 
   .sideStatus {
-    background-color: #efebe9;
+    background-color: white;
+    radius: 2px;
     padding: 10px, 10px, 10px, 10px;
-    border: 1px solid #d7ccc8;
+    box-shadow: 1px 1px 9px 5px #E5E4E2
   }
 
   .projectTitle {
@@ -21,7 +22,11 @@
   }
 
   .div1 {
-    border-bottom: 1px solid grey;
+    border-bottom: 1px solid #E5E4E2;
+  }
+
+  .description {
+    padding: 0px, 20px, 0px, 0px
   }
 
 </style>
@@ -34,7 +39,7 @@
   </div>
 
   
-  <div class="col s5 offset-s1">
+  <div class="col s4 offset-s1">
     <h4>Project description</h4>
     <h6><%= @project. description %></h6>
     <h6>Estimated Hours Needed: <%= @project.estimated_hours %></h6>
@@ -43,13 +48,13 @@
     <h6><%= @project.date.strftime("%A, %B %d %Y")%></h6>
     <h6><%= @project.address %></h6>
     <br>
-    <h5>Organized by: <%= @project.organizer.name %></h5>
-    <h5>Organizer email: <%= @project.organizer.email %></h5>
+    <h6>Organizer: <%= @project.organizer.name %></h6>
+    <h6>Organizer email: <%= @project.organizer.email %></h6>
     <br>
   </div>
   
   
-  <div class="sideStatus col s5 center-align">
+  <div class="sideStatus col s5 offset-s1 center-align">
     <br>
     <% if pledge_time_remaining(@project) > 0 %>
       <h6><b><%= pledge_time_remaining(@project)%> pledged-hours left until we reach our goal</b></h6>

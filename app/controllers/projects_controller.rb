@@ -1,10 +1,11 @@
 class ProjectsController < ApplicationController
-    
-  before_action :redirect_if_not_logged_in, only: [:index, :new, :create, :edit, :destroy]
+  
+  before_action :redirect_if_not_logged_in
   before_action :find_project, only: [:show, :edit, :update, :destroy]
   before_action :redirect_if_not_organizer, only: [:edit, :update, :destroy]
   before_action :redirect_if_location_is_empty, only: [:new, :index]
-
+  before_action :redirect_if_not_in_users_community, only: [:show]
+  
   def index
     @projects = Project.in_date_user_projects(current_user.community.id, Date.today).order("date ASC")
   end
@@ -68,6 +69,12 @@ class ProjectsController < ApplicationController
     if @project.organizer != current_user
       redirect_to user_path(current_user)
     end
+  end
+
+  def redirect_if_not_in_users_community
+      if @project.community != current_user.community
+        redirect_to projects_path
+      end
   end
 
 end

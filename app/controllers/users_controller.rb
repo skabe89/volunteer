@@ -23,8 +23,8 @@ class UsersController < ApplicationController
   def show
     @user = current_user
     @lead_projects = Project.user_organized_projects(@user.id)
-    # @lead_projects = Project.where(organizer_id: @user.id)
     @projects = @lead_projects + @user.projects
+    @user_pledges = Pledge.ordered_user_pledges(@user.id)
   end
 
   def edit

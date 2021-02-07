@@ -1,6 +1,12 @@
 <style>
   .div1 {
-    border-bottom: 1px solid grey;
+    border-bottom: 1px solid #E5E4E2;
+  }
+
+  .icon {
+    position: relative;
+    top: 7px;
+    left: 5px;
   }
 </style>
 
@@ -8,7 +14,7 @@
   <li>
     <% pledges.each do |pledge| %>
       <div class="div1">
-        <i class="small material-icons" style="color:green">person &ensp;</i> <%= pledge.user.name %> pledged <%= pledge.hours%> hours <%= pledge.created_at.strftime("-%b %d") %> <br>
+        <i class="icon small material-icons" style="color:green">person &ensp;</i> <%= pledge.user.name %> pledged <%= pledge.hours%> hours <%= pledge.created_at.strftime("-%b %d") %> <br>
         <br>
       </div>
       <br>

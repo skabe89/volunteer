@@ -17,7 +17,6 @@
       <li><%=link_to "Login", login_path %></li>
       <li><%= link_to "Log in with Google", '/auth/google_oauth2', method: :post %></li>
     </ul>
-    
     <% else %>
     <ul class="left black-text">
       <li><%= link_to "Home", root_path %></li>
@@ -30,7 +29,6 @@
       <li><%= link_to "Logout", logout_path, method: :post %></li>
     </ul>
     <%end%>
-
-  </div>
+    </div>
   </nav>
-  </div>
+</div>
