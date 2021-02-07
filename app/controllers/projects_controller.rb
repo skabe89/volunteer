@@ -44,6 +44,7 @@ class ProjectsController < ApplicationController
   end
 
   def destroy
+    @project.pledges.destroy_all
     @project.destroy
     redirect_to new_project_path
   end
