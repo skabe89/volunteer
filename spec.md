@@ -1,0 +1,7 @@
+- [x] Using Ruby on Rails for the project
+- [x] Include at least one has_many relationship (project has many pledges) 
+- [x] Include at least one belongs_to relationship (user belongs to community)
+- [x] Include at least two has_many through relationships (state has many users through community)
+- [x] Include at least one many-to-many relationship (user has many projects through pledges, project has many users through pledges)
+- [x] The "through" part of the has_many through includes at least one user submittable attribute, that is to say, some attribute other than its foreign keys that can be submitted by the app's user (pledges have the attribute hours)
+- [x] Include reasonable validations for simple model objects (All models have validations)
