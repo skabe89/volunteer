@@ -3,22 +3,12 @@
 This README would normally document whatever steps are necessary to get the
 application up and running.
 
-Things you may want to cover:
+To get the app running:
 
-* Ruby version
+Clone over the repo and 'bundle install' the gems.
 
-* System dependencies
+Create your own omniauth credintials and add them into the env folder.
 
-* Configuration
+Migrate the db/seed the state data.
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Run 'rails s' in the console then go to 'http://localhost:3000' in your browser to get things going.
