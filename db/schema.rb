@@ -15,49 +15,49 @@ ActiveRecord::Schema.define(version: 2021_02_02_214833) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "communities", force: :cascade do |t|
+  create_table "communities", id: :serial, force: :cascade do |t|
     t.string "location"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.integer "state_id"
   end
 
-  create_table "pledges", force: :cascade do |t|
+  create_table "pledges", id: :serial, force: :cascade do |t|
     t.integer "hours"
     t.integer "user_id"
     t.integer "project_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.string "comment"
   end
 
-  create_table "projects", force: :cascade do |t|
+  create_table "projects", id: :serial, force: :cascade do |t|
     t.date "date"
     t.string "description"
     t.integer "estimated_hours"
     t.string "address"
     t.integer "organizer_id"
     t.integer "community_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.string "title"
     t.string "min_volunteers"
   end
 
-  create_table "states", force: :cascade do |t|
+  create_table "states", id: :serial, force: :cascade do |t|
     t.string "name"
     t.string "abbreviation"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
-  create_table "users", force: :cascade do |t|
+  create_table "users", id: :serial, force: :cascade do |t|
     t.string "name"
     t.string "email"
     t.string "password_digest"
     t.integer "community_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.integer "state_id"
   end
 
